@@ -83,6 +83,7 @@ public class Main
 				{
 					System.out.println("What name will the account be under?");
 					String name = n.nextLine();
+					name = name.trim();
 					System.out.println("Would you like to set an initial balance?");
 					String balanceAns = n.nextLine();
 					while (!balanceAns.equals("yes") && !balanceAns.equals("no")) 
@@ -154,26 +155,32 @@ public class Main
 					}
 					else
 					{
+						bankAccountsName = new ArrayList<BankAccount>();
 						System.out.println("Please type your full name");
 						name = n.nextLine();
+						name = name.trim();
 						for (BankAccount ba: bankAccounts)
 						{
 							accName = ba.getName();
+							accName = accName.trim();
 							if (accName.equalsIgnoreCase(name))
 								bankAccountsName.add(ba);
 						}
-						if (accName == null)
+						if (bankAccountsName.size() == 0)
 						{
 							System.out.println("That name is not in our system");
 						}
-						System.out.println("Your bank account numbers are: ");
-						for (BankAccount ban: bankAccountsName)
+						else
 						{
-							System.out.print(ban.getAccNum());
-							if (ban instanceof CheckingAccount)
-								System.out.println(": checking account");
-							else if (ban instanceof SavingsAccount)
-								System.out.println(": savings account");
+							System.out.println("Your bank account numbers are: ");
+							for (BankAccount ban: bankAccountsName)
+							{
+								System.out.print(ban.toString());
+								if (ban instanceof CheckingAccount)
+									System.out.println(": checking account");
+								else if (ban instanceof SavingsAccount)
+									System.out.println(": savings account");
+							}
 						}
 						System.out.println("What is your account number?");
 						input = n.nextLine();
@@ -286,26 +293,32 @@ public class Main
 						}
 						else
 						{
+							bankAccountsName = new ArrayList<BankAccount>();
 							System.out.println("Please type your full name");
 							name = n.nextLine();
+							name = name.trim();
 							for (BankAccount ba: bankAccounts)
 							{
 								accName = ba.getName();
+								accName = accName.trim();
 								if (accName.equalsIgnoreCase(name))
 									bankAccountsName.add(ba);
 							}
-							if (accName == null)
+							if (bankAccountsName.size() == 0)
 							{
 								System.out.println("That name is not in our system");
 							}
-							System.out.println("Your bank account numbers are: ");
-							for (BankAccount ban: bankAccountsName)
+							else
 							{
-								System.out.println(ban.getName());
-								if (ban instanceof CheckingAccount)
-									System.out.println(": checking account");
-								else if (ban instanceof SavingsAccount)
-									System.out.println(": savings account");
+								System.out.println("Your bank account numbers are: ");
+								for (BankAccount ban: bankAccountsName)
+								{
+									System.out.print(ban.toString());
+									if (ban instanceof CheckingAccount)
+										System.out.println(": checking account");
+									else if (ban instanceof SavingsAccount)
+										System.out.println(": savings account");
+								}
 							}
 							System.out.println("What is the account number?");
 							input = n.nextLine();
@@ -333,22 +346,32 @@ public class Main
 				}
 				else if (action.equals("G"))
 				{
+					bankAccountsName = new ArrayList<BankAccount>();
 					System.out.println("Please type your full name");
 					name = n.nextLine();
+					name = name.trim();
 					for (BankAccount ba: bankAccounts)
 					{
 						accName = ba.getName();
+						accName = accName.trim();
 						if (accName.equalsIgnoreCase(name))
 							bankAccountsName.add(ba);
 					}
-					if (accName == null)
+					if (bankAccountsName.size() == 0)
 					{
 						System.out.println("That name is not in our system");
 					}
-					System.out.println("Your bank account numbers are: ");
-					for (BankAccount ban: bankAccountsName)
+					else
 					{
-						System.out.println(ban.getAccNum());
+						System.out.println("Your bank account numbers are: ");
+						for (BankAccount ban: bankAccountsName)
+						{
+							System.out.print(ban.toString());
+							if (ban instanceof CheckingAccount)
+								System.out.println(": checking account");
+							else if (ban instanceof SavingsAccount)
+								System.out.println(": savings account");
+						}
 					}
 				}
 			}
